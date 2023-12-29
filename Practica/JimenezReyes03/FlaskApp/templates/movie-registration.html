@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Película</title>
+</head>
+<body>
+    <h1>Registro de Película</h1>
+    <form method="POST" action="{{ url_for('movie.registrar_pelicula') }}">
+        <!-- Campos de registro de película -->
+        <input type="text" name="nombre" placeholder="Nombre de la Película">
+        <input type="text" name="genero" placeholder="Género">
+        <input type="number" name="duracion" placeholder="Duración (minutos)">
+        <input type="number" name="inventario" placeholder="Inventario">
+        <input type="submit" value="Registrar Película">
+    </form>
+</body>
+</html>

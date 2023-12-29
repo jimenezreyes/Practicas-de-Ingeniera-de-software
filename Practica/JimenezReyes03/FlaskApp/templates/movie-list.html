@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Películas</title>
+</head>
+<body>
+    <h1>Lista de Películas</h1>
+    <ul>
+        {% for pelicula in peliculas %}
+            <li>{{ pelicula.nombre }} (Género: {{ pelicula.genero }}) <a href="{{ url_for('movie.editar_pelicula', id=pelicula.idPelicula) }}">Editar</a> <a href="{{ url_for('movie.eliminar_pelicula', id=pelicula.idPelicula) }}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('movie.registrar_pelicula') }}">Registrar Nueva Película</a>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Rentas</title>
+    <style>
+        /* Estilo para las rentas vencidas */
+        .renta-vencida {
+            color: red;
+            /* Otras propiedades de estilo, como fondo amarillo, ícono de advertencia, etc. */
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Rentas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Renta</th>
+                <th>ID Usuario</th>
+                <th>ID Película</th>
+                <th>Fecha Renta</th>
+                <th>Días de Renta</th>
+                <th>Estatus</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de actualización -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for renta in rentas %}
+                <tr {% if renta.estatus %}class="renta-vencida"{% endif %}>
+                    <td>{{ renta.idRentar }}</td>
+                    <td>{{ renta.idUsuario }}</td>
+                    <td>{{ renta.idPelicula }}</td>
+                    <td>{{ renta.fechaRenta }}</td>
+                    <td>{{ renta.diasDeRenta }}</td>
+                    <td>{{ "Vencida" if renta.estatus else "Activa" }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('renta.actualizar_renta', id=renta.idRentar) }}">
+                            <!-- Campo oculto para almacenar el estado actual de la renta -->
+                            <input type="hidden" name="estatus_actual" value="{{ 1 if renta.estatus else 0 }}">
+                            <!-- Botón para actualizar -->
+                            <input type="submit" value="Actualizar">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Enlace para volver a la creación de rentas -->
+    <a href="{{ url_for('renta.crear_renta') }}">Crear Nueva Renta</a>
+</body>
+</html>

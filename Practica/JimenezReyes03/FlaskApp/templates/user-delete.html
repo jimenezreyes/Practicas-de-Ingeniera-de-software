@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Usuario</title>
+</head>
+<body>
+    <h1>Eliminar Usuario</h1>
+    <p>¿Estás seguro de que deseas eliminar al usuario "{{ usuario.nombre }}"?</p>
+    <form method="POST" action="{{ url_for('delete.eliminar_usuario', id=usuario.idUsuario) }}">
+        <input type="submit" value="Eliminar Usuario">
+    </form>
+    <a href="{{ url_for('user.main_view') }}">Cancelar y volver a la lista de usuarios</a>
+</body>
+</html>

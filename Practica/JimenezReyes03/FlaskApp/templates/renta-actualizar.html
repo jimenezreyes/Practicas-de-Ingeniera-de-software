@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Renta</title>
+</head>
+<body>
+    <h1>Actualizar Renta</h1>
+    <form method="POST" action="{{ url_for('renta.actualizar_renta', id=renta.idRenta) }}">
+        <p>Renta ID: {{ renta.idRenta }}</p>
+        <p>Usuario ID: {{ renta.idUsuario }}</p>
+        <p>Película ID: {{ renta.idPelicula }}</p>
+        <p>Fecha de Renta: {{ renta.fechaRenta }}</p>
+        <p>Días de Renta: {{ renta.diasDeRenta }}</p>
+        <p>Estatus: {{ 'Entregado' if renta.estatus else 'No entregado' }}</p>
+        
+        <!-- Campo oculto para almacenar el estado actual de la renta -->
+        <input type="hidden" name="estatus_actual" value="{{ 1 if renta.estatus else 0 }}">
+
+        <!-- Botón para actualizar -->
+        <input type="submit" value="Marcar como {{ 'No Entregado' if renta.estatus else 'Entregado' }}">
+
+        <!-- Enlace para volver a la lista de rentas -->
+        <a href="{{ url_for('renta.listar_rentas') }}">Volver a la Lista de Rentas</a>
+    </form>
+</body>
+</html>

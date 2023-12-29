@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Renta</title>
+</head>
+<body>
+    <h1>Crear Nueva Renta</h1>
+    <form method="POST" action="{{ url_for('renta.crear_renta') }}">
+        <!-- Campo para el ID del Usuario -->
+        <label for="idUsuario">ID del Usuario:</label>
+        <input type="number" name="idUsuario" required>
+        
+        <!-- Campo para el ID de la Película -->
+        <label for="idPelicula">ID de la Película:</label>
+        <input type="number" name="idPelicula" required>
+
+        <!-- Campo para los días de renta -->
+        <label for="dias_de_renta">Días de Renta:</label>
+        <input type="number" name="dias_de_renta" required>
+
+        <!-- Botón para crear la renta -->
+        <input type="submit" value="Crear Renta">
+    </form>
+
+    <!-- Mensajes de error si es necesario -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <!-- Enlace para volver a la lista de rentas -->
+    <a href="{{ url_for('renta.listar_rentas') }}">Volver a la lista de Rentas</a>
+</body>
+</html>

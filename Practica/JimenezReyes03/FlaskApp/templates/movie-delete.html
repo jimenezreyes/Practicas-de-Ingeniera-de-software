@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Película</title>
+</head>
+<body>
+    <h1>Eliminar Película</h1>
+    <p>¿Estás seguro de que deseas eliminar la película "{{ pelicula.nombre }}"?</p>
+    <form method="POST" action="{{ url_for('movie.eliminar_pelicula', id=pelicula.idPelicula) }}">
+        <input type="submit" value="Eliminar Película">
+    </form>
+    <a href="{{ url_for('movie.main_view') }}">Cancelar y volver a la lista de películas</a>
+</body>
+</html>
