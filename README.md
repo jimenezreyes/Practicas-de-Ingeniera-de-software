@@ -13,7 +13,7 @@ Tkinter: Utilizada para crear interfaces gráficas de usuario (GUI) en el progra
 
 React: Framework JavaScript para construir interfaces de usuario interactivas en aplicaciones web.
 
-#Software Requerido
+# Software Requerido
 
 Python: Para ejecutar scripts y manejar lógica de programación.
 
